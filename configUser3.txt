@@ -1,0 +1,7 @@
+{
+"walletPath":"/Users/danielefriolo/fabric-samples/messageboard/java/wallet2",
+"userId":"3",
+"channelName":"mychannel",
+"chaincodeName":"messageboard",
+"networkConfigPath":"/Users/danielefriolo/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.yaml"
+}

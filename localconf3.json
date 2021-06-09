@@ -1,0 +1,11 @@
+{
+    "walletSK": "0xf74725685bae45386cdd51027bb59de676b186a5e6740cfdd83d369300a7bca1",
+    "hostURL": "http://localhost:7545",
+    "maxTxSize": 1000,
+    "confirmationTime": 0,
+    "contractAddr": "0x56181ff5bf9e6D3e7d71E4ff9492C5b03b7531b6",
+    "participants": [ "0xC4A5b285633180AE9Cab1810802459e4934dE264",
+        "0x8e2056196bE844B8507c34daEBf24987c3d12589",
+        "0xb916A7229B9423DB66a15388a4581C9E2a445Bdb"
+    ]
+}

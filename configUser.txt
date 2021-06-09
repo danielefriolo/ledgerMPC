@@ -1,0 +1,14 @@
+{
+"walletPath":"/Users/danielefriolo/fabric-samples/messageboard/java/wallet",
+"userId":"1",
+"channelName":"mychannel",
+"chaincodeName":"messageboard",
+"networkConfigPath":"/Users/danielefriolo/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.yaml",
+"parties": [{"mspid":"Org1MSP",
+			   "sendingpid":"1"},
+				{"mspid":"Org1MSP",
+				"sendingpid":"2"},
+				{"mspid":"Org2MSP",
+					"sendingpid":"3"}
+]
+}

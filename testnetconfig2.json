@@ -1,0 +1,14 @@
+{
+    "walletSK": "0x4a8aaea611289fffb64e5e1efe7126e8eb3f3d79941561c179051695f01bb176",
+    "hostURL": "https://ropsten.infura.io/v3/9f9ed6ae8a7c452897a232ef288b590b",
+    "maxTxSize": 1000,
+    "confirmationTime": 0,
+    "contractAddr": "0x4C50a188d772F1Fade9b2892A3070c9818037528",
+    "participants": [ "0xd3Aa134bc24ca9A98224BEBfF04ff98FAE40e664",
+        "0x3407678c9d8fe5b7e05E25802917C3332A8Ad065",
+        "0x8b680e6Ef25ed3aA781299d5fAb993c06d754a42",
+        "0xCb01C0acDFcA8Db084BCFD2549B7c1ea92035b05",
+        "0x1C56A2E5FC0ecf7f674759f0eb662E5b25546Db9",
+        "0x2451106204a9c6f634aF1455Ee92dd866A1EC092"
+    ]
+}
