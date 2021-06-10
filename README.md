@@ -11,7 +11,7 @@ It is successfully tested with MPyC and EMP-ag2PC libraries. It can be run with 
 
 1. Install [Maven](https://maven.apache.org/install.html#:~:text=The%20installation%20of%20Apache%20Maven,distribution%20archive%20in%20any%20directory)
 
-1. Go to the main dictory and install the project with the following command
+1. Navigate to the project directory and install the project with the following command
 
 ```shell
 mvn install
@@ -57,7 +57,7 @@ As in Ethereum, we included files `configUser[2/3].txt` as an example. Since HLF
 To create a new config file include the following field in a json file:
 
 * **walletPath**: The path of the user's wallet in the HLF project.
-* **UsedId**: The party ID.
+* **userId**: The party ID.
 * **channelName**: name of the channel used.
 * **chaincodeName**: name of the chaincode used.
 * **networkConfigPath**: path to the HLF configuration `.yaml` file.
@@ -110,4 +110,8 @@ java -cp <BUILD JAR FILE> proxy.java S <PID> 3 1 12346 /Users/danielefriolo/tool
 java -cp <BUILD JAR FILE> proxy.java S <PID> 3 2 12346 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig3.json <BLOCKCHAIN>
 ```
 
+**NOTICE**: This order of commands works only for ETH and DOF in the actual version. For a correct execuction with the HLF ledger, the following order of commands must be performed
+* First, players run the proxy commands with the S flag (Player 2 and 3 above) before running the MPyC demo instance.
+* Then, all the players run their MPyC instance.
+* Finally, players will run the proxy commands with the C flag.
 
