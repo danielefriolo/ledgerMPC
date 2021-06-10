@@ -110,4 +110,8 @@ java -cp <BUILD JAR FILE> proxy.java S <PID> 3 1 12346 /Users/danielefriolo/tool
 java -cp <BUILD JAR FILE> proxy.java S <PID> 3 2 12346 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig3.json <BLOCKCHAIN>
 ```
 
+**NOTICE**: This order of commands works only for ETH and DOF in the actual version. For a correct execuction with the HLF ledger, the following order of commands must be performed
+* First, players run the proxy commands with the S flag (Player 2 and 3 above) before running the MPyC demo instance.
+* Then, all the players run their MPyC instance.
+* Finally, players will run the proxy commands with the C flag.
 
