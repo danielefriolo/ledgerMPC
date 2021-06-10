@@ -25,7 +25,8 @@ To start using our proxy for a communication channel, go to `src/main/java` per 
 java -cp <JAR BUILD FILE PATH> proxy.java <C/S> <SID> <LOCAL PARTY PID> <REMOTE PARTY PID> <PORT> <CONFIG INFO> <BLOCKCHAIN> <QUICKNESS>
 ```
 
-This command must be run by the user for each remote party involved in the MPC execution (n-1 communication channels). In particular each command invokation opens a ccommunication channel with a remote party.
+This command must be run by the user for each remote party involved in the MPC execution (n-1 communication channels). 
+In particular each command invokation opens a communication channel with a remote party. Note that our proxy works for any protocol (not only Secure MPC) involving multiple parties.
 We remark the fact that in this version the user has to write the **absolute** path of the blockchain's configuration file. We describe the meaning of the described fields in the following:
 
 * **Jar build file path**: the path of the `.jar` file created during the installation phase
