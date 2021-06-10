@@ -11,7 +11,7 @@ It is successfully tested with MPyC and EMP-ag2PC libraries. It can be run with 
 
 1. Install [Maven](https://maven.apache.org/install.html#:~:text=The%20installation%20of%20Apache%20Maven,distribution%20archive%20in%20any%20directory)
 
-1. Go to the main dictory and install the project with the following command
+1. Navigate to the project directory and install the project with the following command
 
 ```shell
 mvn install
