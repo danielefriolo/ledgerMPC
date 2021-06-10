@@ -61,6 +61,7 @@ To test our proxy, we show how to run one of the MPyC demos with our toolkit for
 ```shell
 python3 <DEMO FILE> -Plocalhost:1 -Plocalhost:12347 -Plocalhost:12349 -I0
 ```
+
 4. Player 2 opens the terminal and runs the following command
 
 ```shell
