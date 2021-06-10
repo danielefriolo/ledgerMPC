@@ -7,11 +7,11 @@ It is successfully tested with MPyC and EMP-ag2PC libraries. It can be run with 
 
 1. Clone this repository.
 
-1. Use the pre-built file `mpctoolkit-1.0-SNAPSHOT.jar` located in `target/` or.
+1. Use the pre-built file `mpctoolkit-1.0-SNAPSHOT.jar` located in `target/` or
 
 1. Install [Maven](https://maven.apache.org/install.html#:~:text=The%20installation%20of%20Apache%20Maven,distribution%20archive%20in%20any%20directory)
 
-1. Go to the main dictory and install the project with
+1. Go to the main dictory and install the project with the following command
 
 ```shell
 mvn install
@@ -19,13 +19,13 @@ mvn install
 
 ## Usage
 
-To start using our proxy, go to `src/main/java` per the `proxy.java` file is located. To run the daemon, use the following command
+To start using our proxy for a communication channel, go to `src/main/java` per the `proxy.java` file is located. To run the daemon, use the following command
 
 ```shell
 #java -cp <JAR BUILD FILE PATH> proxy.java <C/S> <SID> <LOCAL PARTY PID> <REMOTE PARTY PID> <PORT> <CONFIG INFO> <BLOCKCHAIN> <QUICKNESS>
 ```
 
-This command must be run the user for each recipient in the MPC. In particular each command invokation opens a ccommunication channel with a remote party.
+This command must be run by the user for each remote party involved in the MPC execution (n-1 communication channels). In particular each command invokation opens a ccommunication channel with a remote party.
 We remark the fact that in this version the user has to write the **absolute** path of the blockchain's configuration file. We describe the meaning of the described fields in the following:
 
 * **Jar build file path**: the path of the `.jar` file created during the installation phase
@@ -49,5 +49,29 @@ To facilitate Ethereum testing we included files `testnetconfig[2/3].json` conta
 * **confirmationTime**: Blockchain confirmation time (e.g. 12 in Ethereum).
 * **contractAddr**: The pre-deployed smart contract needed to collect MPC messages. We provided a [pre-deployed](https://ropsten.etherscan.io/address/0x4C50a188d772F1Fade9b2892A3070c9818037528) contract.
 * **participants**: An array containing wallet addresses of the participants in order (i.e. the wallet of player with ID 1 shall be in the first position, etc).
+
+## Usage example with MPyC
+
+To test our proxy, we show how to run one of the MPyC demos with our toolkit for 3 parties
+
+1. Clone [MPyC](https://github.com/lschoe/mpyc).
+2. Navigate to the `demos/` directory.
+3. Player 1 opens the terminal and runs the following command
+
+```shell
+python3 <DEMO FILE> -Plocalhost:1 -Plocalhost:12347 -Plocalhost:12349 -I0
+```
+4. Player 2 opens the terminal and runs the following command
+
+```shell
+#python3 <DEMO FILE> -Plocalhost:12347 -Plocalhost:12345 -Plocalhost:12348 -I1
+```
+
+5. Player 3 opens the terminal and runs the following command
+
+```shell
+#python3 <DEMO FILE> -Plocalhost:12349 -Plocalhost:12348 -Plocalhost:12346 -I2
+```
+
 
 
