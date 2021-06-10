@@ -31,7 +31,7 @@ public static void main(String[] args) throws IOException {
 // Server
 //
 //
- System.out.println("args: " + args[0]+"v"+args[1]+ "v"+args[2]+"v"+args[3]+"v"+args[4]+"v"+args[5]+"v"+args[6]);
+ System.out.println("args: " + args[0]+"v"+args[1]+ "v"+args[2]+"v"+args[3]+"v"+args[4]+"v"+args[5]+"v"+args[6]+"v"+args[7]);
 SID=args[1].getBytes();
 P1=Integer.valueOf(args[2]);
 P2=Integer.valueOf(args[3]);
@@ -80,7 +80,7 @@ DataOutputStream osw = new DataOutputStream(new BufferedOutputStream(clientSocke
 BufferedOutputStream bw = new BufferedOutputStream(osw);
 //out = new PrintWriter(bw, true);
 switch (args[6]) {
-    case "Eth":
+    case "ETH":
         dof = new EthereumBlockchain();
         break;
     case "HLF":
@@ -111,7 +111,7 @@ read_counter++;
 byte[] msg = null;
  //System.out.println("Debug before read from blockchain:\n "+args[2]+" " +str);
 try {
-	msg = dof.readData(read_counter,false);
+	msg = dof.readData(read_counter, args[7].equals("1"));
 	//byte[][] readData = readBroadcastData(read_counter, partyNum, false);
 } catch (Exception e) {
 	e.printStackTrace();

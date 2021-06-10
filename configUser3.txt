@@ -3,5 +3,5 @@
 "userId":"3",
 "channelName":"mychannel",
 "chaincodeName":"messageboard",
-"networkConfigPath":"/Users/danielefriolo/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.yaml"
+"networkConfigPath":"..."
 }
