@@ -49,7 +49,7 @@ To facilitate Ethereum testing we included files `testnetconfig[2/3].json` conta
 * **maxTxSize**: Maximum size available for a single transaction (not used in this version).
 * **confirmationTime**: Blockchain confirmation time (e.g. 12 in Ethereum).
 * **contractAddr**: The pre-deployed smart contract needed to collect MPC messages. We provided a [pre-deployed](https://ropsten.etherscan.io/address/0x4C50a188d772F1Fade9b2892A3070c9818037528) contract.
-* **participants**: An array containing wallet addresses of the participants in order (i.e. the wallet of player with ID 1 shall be in the first position, etc).
+* **participants**: An array containing wallet addresses of the participants in ascending order (i.e. the wallet of player with ID 1 shall be in the first position, etc).
 
 ## Usage example with MPyC
 
