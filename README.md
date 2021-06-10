@@ -57,7 +57,7 @@ As in Ethereum, we included files `configUser[2/3].txt` as an example. Since HLF
 To create a new config file include the following field in a json file:
 
 * **walletPath**: The path of the user's wallet in the HLF project.
-* **UsedId**: The party ID.
+* **userId**: The party ID.
 * **channelName**: name of the channel used.
 * **chaincodeName**: name of the chaincode used.
 * **networkConfigPath**: path to the HLF configuration `.yaml` file.
