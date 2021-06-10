@@ -1,5 +1,5 @@
-# ledgerMPC 
-MPC toolkit prototype for ledger interaction, developer by UNISA crypto group,
+# Ledger MPC Toolkit
+MPC toolkit prototype for ledger interaction, developer by UNISA crypto group.
 It is successfully tested with MPyC and EMP-ag2PC libraries. It can be run with Ehtereum, Hyperledger Fabric, and with a local artificially created ledger aimed for testing.
 
 
@@ -55,24 +55,26 @@ To facilitate Ethereum testing we included files `testnetconfig[2/3].json` conta
 To test our proxy, we show how to run one of the MPyC demos with our toolkit for 3 parties
 
 1. Clone [MPyC](https://github.com/lschoe/mpyc).
-2. Navigate to the `demos/` directory.
-3. Player 1 opens the terminal and runs the following command
+2. Navigate to the `demos/` directory and choose a demo file between the listed ones.
+3. Party 1 opens the terminal file and runs the following command:
 
 ```shell
 python3 <DEMO FILE> -Plocalhost:1 -Plocalhost:12347 -Plocalhost:12349 -I0
 ```
 
-4. Player 2 opens the terminal and runs the following command
+4. Party 2 opens the terminal and runs the following command
 
 ```shell
 #python3 <DEMO FILE> -Plocalhost:12347 -Plocalhost:12345 -Plocalhost:12348 -I1
 ```
 
-5. Player 3 opens the terminal and runs the following command
+5. Party 3 opens the terminal and runs the following command
 
 ```shell
 #python3 <DEMO FILE> -Plocalhost:12349 -Plocalhost:12348 -Plocalhost:12346 -I2
 ```
+
+Now that each party has started MPyC and configured the port to communicate with the proxy via TCP, each user can run our toolkit to forward the messages to the selected blockchain.
 
 
 
