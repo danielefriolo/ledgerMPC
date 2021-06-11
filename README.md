@@ -76,7 +76,7 @@ Coupled with the dummy blockchain, we provided a DemoServer that can be runned e
 ant -f DemoServer.xml
 ```
 
-that will generate a `DemoServer-${version}.${build.number}.jar` inside the directory `dist/lib/`. The server can be run by running the command
+that will generate a `DemoServer-${version}.${build.number}.jar` inside the directory `dist/lib/`. The server can be run with the following command
 
 ```shell
 java -jar DemoServer.xml
