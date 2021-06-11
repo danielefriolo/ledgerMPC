@@ -1,6 +1,6 @@
 # Ledger MPC Toolkit
 MPC toolkit prototype for ledger interaction, developed by the University of Salerno (UNISA) crypto group.
-It is successfully tested with MPyC and EMP-ag2PC libraries. It can be run with Ehtereum, Hyperledger Fabric, and with a local artificially created ledger aimed for testing.
+It is successfully tested with MPyC and EMP-ag2PC libraries. It can be run with Ehtereum, Hyperledger Fabric, and with a local dummy ledger aimed for testing. Moreover, we provided a Coin Tossing protocol secure against the majority of corrupted parties.
 
 
 ## Installation
@@ -63,6 +63,24 @@ To create a new config file include the following field in a json file:
 * **networkConfigPath**: path to the HLF configuration `.yaml` file.
 * **parties**: for user 1, a JSON array containing the MSP ID and the user ID of each involved party; the parties have to
 be listed in ascending order of user ID.
+
+### Dummy Blockchain
+
+We included the file `png.cfg` as an example. In this file is sufficient to write two rows with the following data
+* Host IP
+* Port used to communicate with the server
+
+Coupled with the dummy blockchain, we provided a DemoServer that can be runned either by using the `DemoServer.jar`file provided in the repository, or by generating it by running
+
+```shell
+ant -f DemoServer.xml
+```
+
+that will generate a `DemoServer-${version}.${build.number}.jar` inside the directory `dist/lib/`. The server can be run by running the command
+
+```shell
+java -jar DemoServer.xml
+```
 
 ## Usage example with MPyC
 
