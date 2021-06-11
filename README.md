@@ -36,7 +36,7 @@ We remark the fact that in this version the user has to write the **absolute** p
 * **Remote Party ID**: the party ID of the remote party. The couple (local party, remote party) defines a communication channel between them.
 * **Port**: The port of the localhost that the MPC library will use to deliver message to the remote party.
 * **Config info**: Initial blockchain configuration. In our blockchain instantiations it is the path of a configuration file (more info in the blockchains section)
-* **Blockchain**: The blockchain used. It can be instantiated with `ETH`, `HLF` or `DOF` (local blockchain).
+* **Blockchain**: The blockchain used. It can be instantiated with `ETH`, `HLF` or `DOF` (dummy blockchain).
 * **Quickness**: 1 if the procotol should be run in quick mode, 0 otherwise. Parameter ignored in HLF and DOF.
 
 ## Config files
@@ -66,7 +66,7 @@ be listed in ascending order of user ID.
 
 ### Dummy Blockchain
 
-We included the file `png.cfg` as an example. In this file is sufficient to write two rows with the following data
+We included the file `pgn.cfg` as an example. In this file is sufficient to write two rows with the following data
 * Host IP
 * Port used to communicate with the server
 
@@ -111,25 +111,66 @@ Now that each party has started MPyC and configured the port to communicate with
 * Party 1,  runs the following commands two new shells
 
 ```shell
-java -cp <BUILD JAR FILE> proxy.java C <PID> 1 2 12347 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig.json <BLOCKCHAIN>
-java -cp <BUILD JAR FILE>  proxy.java C <PID> 1 3 12349 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig.json <BLOCKCHAIN>
+java -cp <BUILD JAR FILE> proxy.java C <PID> 1 2 12347 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig.json <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE>  proxy.java C <PID> 1 3 12349 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig.json <BLOCKCHAIN> <QUICKNESS>
 ```
 * Party 2,  runs the following commands two new shells
 
 
 ```shell
-java -cp <BUILD JAR FILE> proxy.java S <PID> 2 1 12345 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig2.json <BLOCKCHAIN>
-java -cp <BUILD JAR FILE> proxy.java C <PID> 2 3 12348 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig2.json <BLOCKCHAIN>
+java -cp <BUILD JAR FILE> proxy.java S <PID> 2 1 12345 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig2.json <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE> proxy.java C <PID> 2 3 12348 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig2.json <BLOCKCHAIN> <QUICKNESS>
 ```
 * Party 3,  runs the following commands two new shells
 
 ```shell
-java -cp <BUILD JAR FILE> proxy.java S <PID> 3 1 12346 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig3.json <BLOCKCHAIN>
-java -cp <BUILD JAR FILE> proxy.java S <PID> 3 2 12346 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig3.json <BLOCKCHAIN>
+java -cp <BUILD JAR FILE> proxy.java S <PID> 3 1 12346 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig3.json <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE> proxy.java S <PID> 3 2 12346 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig3.json <BLOCKCHAIN> <QUICKNESS>
 ```
 
 **NOTICE**: This order of commands works only for ETH and DOF in the actual version. For a correct execuction with the HLF ledger, the following order of commands must be performed
 * First, players run the proxy commands with the S flag (Player 2 and 3 above) before running the MPyC demo instance.
 * Then, all the players run their MPyC instance.
 * Finally, players will run the proxy commands with the C flag.
+
+### Coin Tossing Protocol usage example
+
+Navigate into the repository folder, and
+
+* Player 1 runs the following command
+```shell
+java CoinTossing 1 1 12347 12349
+```
+* Players 2 runs the following command
+
+```shell
+java CoinTossing 2 12347 12345 12348
+```
+
+* Player 3 runs the following command
+* 
+```shell
+java CoinTossing 3 12349 12348 12346
+```
+Now that each party has started the coin tossing protocol, each user opens two new shells and 
+
+* Party 1,  runs the following commands two new shells
+
+```shell
+java  proxy.java C <PID> 1 2 12347 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+java  proxy.java C <PID> 1 3 12349 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+```
+* Party 2,  runs the following commands two new shells
+
+
+```shell
+java proxy.java S <PID> 2 1 12345 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+java proxy.java C <PID> 2 3 12348 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+```
+* Party 3,  runs the following commands two new shells
+
+```shell
+java proxy.java S <PID> 3 1 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+java proxy.java S <PID> 3 2 12346 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+```
 
