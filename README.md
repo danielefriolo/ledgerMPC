@@ -170,7 +170,7 @@ java proxy.java C <PID> 2 3 12348 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
 * Party 3,  runs the following commands two new shells
 
 ```shell
-java proxy.java S <PID> 3 1 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+java proxy.java S <PID> 3 1 12346 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
 java proxy.java S <PID> 3 2 12346 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
 ```
 
