@@ -174,3 +174,4 @@ java proxy.java S <PID> 3 1 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
 java proxy.java S <PID> 3 2 12346 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
 ```
 
+Note that in the case of our Coin Tossing protocol, the classpath is not needed. Moreover, relative paths are also allowed.
