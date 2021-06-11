@@ -79,7 +79,7 @@ ant -f DemoServer.xml
 that will generate a `DemoServer-${version}.${build.number}.jar` inside the directory `dist/lib/`. The server can be run with the following command
 
 ```shell
-java -jar DemoServer.xml
+java -jar DemoServer.jar
 ```
 
 ## Usage example with MPyC
