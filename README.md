@@ -1,6 +1,6 @@
 # Ledger MPC Toolkit
 MPC toolkit prototype for ledger interaction, developed by the University of Salerno (UNISA) crypto group.
-It is successfully tested with MPyC and EMP-ag2PC libraries. It can be run with Ehtereum, Hyperledger Fabric, and with a local artificially created ledger aimed for testing.
+It is successfully tested with MPyC and EMP-ag2PC libraries. It can be run with Ehtereum, Hyperledger Fabric, and with a local dummy ledger aimed for testing. Moreover, we provided a Coin Tossing protocol secure against the majority of corrupted parties.
 
 
 ## Installation
@@ -36,7 +36,7 @@ We remark the fact that in this version the user has to write the **absolute** p
 * **Remote Party ID**: the party ID of the remote party. The couple (local party, remote party) defines a communication channel between them.
 * **Port**: The port of the localhost that the MPC library will use to deliver message to the remote party.
 * **Config info**: Initial blockchain configuration. In our blockchain instantiations it is the path of a configuration file (more info in the blockchains section)
-* **Blockchain**: The blockchain used. It can be instantiated with `ETH`, `HLF` or `DOF` (local blockchain).
+* **Blockchain**: The blockchain used. It can be instantiated with `ETH`, `HLF` or `DOF` (dummy blockchain).
 * **Quickness**: 1 if the procotol should be run in quick mode, 0 otherwise. Parameter ignored in HLF and DOF.
 
 ## Config files
@@ -63,6 +63,24 @@ To create a new config file include the following field in a json file:
 * **networkConfigPath**: path to the HLF configuration `.yaml` file.
 * **parties**: for user 1, a JSON array containing the MSP ID and the user ID of each involved party; the parties have to
 be listed in ascending order of user ID.
+
+### Dummy Blockchain
+
+We included the file `pgn.cfg` as an example. In this file is sufficient to write two rows with the following data
+* Host IP
+* Port used to communicate with the server
+
+Coupled with the dummy blockchain, we provided a DemoServer that can be runned either by using the `DemoServer.jar`file provided in the repository, or by generating it by running
+
+```shell
+ant -f DemoServer.xml
+```
+
+that will generate a `DemoServer-${version}.${build.number}.jar` inside the directory `dist/lib/`. The server can be run with the following command
+
+```shell
+java -jar DemoServer.jar
+```
 
 ## Usage example with MPyC
 
@@ -93,25 +111,63 @@ Now that each party has started MPyC and configured the port to communicate with
 * Party 1,  runs the following commands two new shells
 
 ```shell
-java -cp <BUILD JAR FILE> proxy.java C <PID> 1 2 12347 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig.json <BLOCKCHAIN>
-java -cp <BUILD JAR FILE>  proxy.java C <PID> 1 3 12349 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig.json <BLOCKCHAIN>
+java -cp <BUILD JAR FILE> proxy.java C <PID> 1 2 12347 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig.json <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE>  proxy.java C <PID> 1 3 12349 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig.json <BLOCKCHAIN> <QUICKNESS>
 ```
 * Party 2,  runs the following commands two new shells
 
 
 ```shell
-java -cp <BUILD JAR FILE> proxy.java S <PID> 2 1 12345 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig2.json <BLOCKCHAIN>
-java -cp <BUILD JAR FILE> proxy.java C <PID> 2 3 12348 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig2.json <BLOCKCHAIN>
+java -cp <BUILD JAR FILE> proxy.java S <PID> 2 1 12345 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig2.json <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE> proxy.java C <PID> 2 3 12348 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig2.json <BLOCKCHAIN> <QUICKNESS>
 ```
 * Party 3,  runs the following commands two new shells
 
 ```shell
-java -cp <BUILD JAR FILE> proxy.java S <PID> 3 1 12346 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig3.json <BLOCKCHAIN>
-java -cp <BUILD JAR FILE> proxy.java S <PID> 3 2 12346 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig3.json <BLOCKCHAIN>
+java -cp <BUILD JAR FILE> proxy.java S <PID> 3 1 12346 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig3.json <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE> proxy.java S <PID> 3 2 12346 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig3.json <BLOCKCHAIN> <QUICKNESS>
 ```
 
-**NOTICE**: This order of commands works only for ETH and DOF in the actual version. For a correct execuction with the HLF ledger, the following order of commands must be performed
-* First, players run the proxy commands with the S flag (Player 2 and 3 above) before running the MPyC demo instance.
-* Then, all the players run their MPyC instance.
-* Finally, players will run the proxy commands with the C flag.
 
+### Coin Tossing Protocol usage example
+
+Navigate into the repository folder, and
+
+* Player 1 runs the following command
+```shell
+java CoinTossing 1 1 12347 12349
+```
+* Players 2 runs the following command
+
+```shell
+java CoinTossing 2 12347 12345 12348
+```
+
+* Player 3 runs the following command
+
+```shell
+java CoinTossing 3 12349 12348 12346
+```
+Now that each party has started the coin tossing protocol, each user opens two new shells and 
+
+* Party 1,  runs the following commands two new shells
+
+```shell
+java  proxy.java C <PID> 1 2 12347 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+java  proxy.java C <PID> 1 3 12349 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+```
+* Party 2,  runs the following commands two new shells
+
+
+```shell
+java proxy.java S <PID> 2 1 12345 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+java proxy.java C <PID> 2 3 12348 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+```
+* Party 3,  runs the following commands two new shells
+
+```shell
+java proxy.java S <PID> 3 1 12346 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+java proxy.java S <PID> 3 2 12346 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+```
+
+Note that in the case of our Coin Tossing protocol, the classpath is not needed. Moreover, relative paths are also allowed.
