@@ -111,21 +111,21 @@ Now that each party has started MPyC and configured the port to communicate with
 * Party 1,  runs the following commands two new shells
 
 ```shell
-java -cp <BUILD JAR FILE> proxy.java C <PID> 1 2 12347 <testnetconfig.json ABOSLUTE PATH> <BLOCKCHAIN> <QUICKNESS>
-java -cp <BUILD JAR FILE>  proxy.java C <PID> 1 3 12349 <testnetconfig.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE> proxy.java C <SID> 1 2 12347 <testnetconfig.json ABOSLUTE PATH> <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE>  proxy.java C <SID> 1 3 12349 <testnetconfig.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
 ```
 * Party 2,  runs the following commands two new shells
 
 
 ```shell
-java -cp <BUILD JAR FILE> proxy.java S <PID> 2 1 12345 <testnetconfig2.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
-java -cp <BUILD JAR FILE> proxy.java C <PID> 2 3 12348 <testnetconfig2.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE> proxy.java S <SID> 2 1 12345 <testnetconfig2.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE> proxy.java C <SID> 2 3 12348 <testnetconfig2.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
 ```
 * Party 3,  runs the following commands two new shells
 
 ```shell
-java -cp <BUILD JAR FILE> proxy.java S <PID> 3 1 12346 <testnetconfig3.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
-java -cp <BUILD JAR FILE> proxy.java S <PID> 3 2 12346 <testnetconfig3.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE> proxy.java S <SID> 3 1 12346 <testnetconfig3.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE> proxy.java S <SID> 3 2 12346 <testnetconfig3.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
 ```
 
 
@@ -153,21 +153,21 @@ Now that each party has started the coin tossing protocol, each user opens two n
 * Party 1,  runs the following commands two new shells
 
 ```shell
-java  proxy.java C <PID> 1 2 12347 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
-java  proxy.java C <PID> 1 3 12349 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+java  proxy.java C <SID> 1 2 12347 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+java  proxy.java C <SID> 1 3 12349 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
 ```
 * Party 2,  runs the following commands two new shells
 
 
 ```shell
-java proxy.java S <PID> 2 1 12345 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
-java proxy.java C <PID> 2 3 12348 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+java proxy.java S <SID> 2 1 12345 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+java proxy.java C <SID> 2 3 12348 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
 ```
 * Party 3,  runs the following commands two new shells
 
 ```shell
-java proxy.java S <PID> 3 1 12346 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
-java proxy.java S <PID> 3 2 12346 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+java proxy.java S <SID> 3 1 12346 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
+java proxy.java S <SID> 3 2 12346 ./pgn.cfg <BLOCKCHAIN> <QUICKNESS>
 ```
 
 Note that in the case of our Coin Tossing protocol, the classpath is not needed. Moreover, relative paths are also allowed.
