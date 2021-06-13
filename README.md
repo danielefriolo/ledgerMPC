@@ -111,21 +111,21 @@ Now that each party has started MPyC and configured the port to communicate with
 * Party 1,  runs the following commands two new shells
 
 ```shell
-java -cp <BUILD JAR FILE> proxy.java C <PID> 1 2 12347 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig.json <BLOCKCHAIN> <QUICKNESS>
-java -cp <BUILD JAR FILE>  proxy.java C <PID> 1 3 12349 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig.json <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE> proxy.java C <PID> 1 2 12347 <testnetconfig.json ABOSLUTE PATH> <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE>  proxy.java C <PID> 1 3 12349 <testnetconfig.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
 ```
 * Party 2,  runs the following commands two new shells
 
 
 ```shell
-java -cp <BUILD JAR FILE> proxy.java S <PID> 2 1 12345 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig2.json <BLOCKCHAIN> <QUICKNESS>
-java -cp <BUILD JAR FILE> proxy.java C <PID> 2 3 12348 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig2.json <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE> proxy.java S <PID> 2 1 12345 <testnetconfig2.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE> proxy.java C <PID> 2 3 12348 <testnetconfig2.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
 ```
 * Party 3,  runs the following commands two new shells
 
 ```shell
-java -cp <BUILD JAR FILE> proxy.java S <PID> 3 1 12346 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig3.json <BLOCKCHAIN> <QUICKNESS>
-java -cp <BUILD JAR FILE> proxy.java S <PID> 3 2 12346 /Users/danielefriolo/toolkitunisa/toolkitunisa/ethereum/testnetconfig3.json <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE> proxy.java S <PID> 3 1 12346 <testnetconfig3.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
+java -cp <BUILD JAR FILE> proxy.java S <PID> 3 2 12346 <testnetconfig3.json ABOSLUTE PATH>  <BLOCKCHAIN> <QUICKNESS>
 ```
 
 
