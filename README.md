@@ -1,5 +1,23 @@
 # Ledger MPC Toolkit
+
+## Description
+
 MPC toolkit prototype for ledger interaction, developed by the University of Salerno (UNISA) crypto group.
+LedgerMPC provides a generic mechanism for parties in a two-party of multi-party computation to use a ledger as a communications channel instead of point-to-point connections. This can be useful for providing an audit trace of the protocol execution or enabling multi-party computations among parties who are not guaranteed to be on-line simultaneously. It is divided in two main components:
+
+### Main Proxy Component
+
+This component provides a proxy between an MPC protocol library and a ledger. Messages from the MPC library are automatically posted to the ledger by the proxy, and when a new message is posted on the ledger from another party, the proxy forwards it to the MPC library.
+The MPC library remains untouched, and thus the feature of redirecting the communication through
+the ledger is transparent. The main requirement to make this possible consists of
+properly setting the IP addresses and port numbers typically used when configuring the library with
+classical TCP connections so that instead of connecting the parties directly, each party is
+connected to the proxy and the proxy can capture the messages sent through such TCP channels.  The proxy encapsulates messages sent to each of these ports as ledger transactions and broadcasts them to the network by contacting the corresponding peers.
+
+### The Generic Proxy Component
+
+The generic proxy component communicates with the MPC libraries by relying on TCP sockets, needed to emulate communication channels between the party impersonated by the library, and all the other parties involved in the MPC protocol.
+
 It is successfully tested with MPyC and EMP-ag2PC libraries. It can be run with Ehtereum, Hyperledger Fabric, and with a local dummy ledger aimed for testing. Moreover, we provided a Coin Tossing protocol secure against the majority of corrupted parties.
 
 
