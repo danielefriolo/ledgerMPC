@@ -2,6 +2,8 @@
 
 MPC toolkit prototype for ledger interaction, developed by the University of Salerno (UNISA) crypto group. 
 
+It is successfully tested with [MPyC](https://github.com/lschoe/) and [EMP-ag2PC libraries](https://github.com/emp-toolkit/emp-ag2pc). It can be run with Ehtereum, Hyperledger Fabric, and with a local dummy ledger aimed for testing. Moreover, we provided a Coin Tossing protocol secure against the majority of corrupted parties. Specifically, the Ethereum library also allows quick protocol execution (without any block confirmation), still retaining MPC security.
+
 ## Description
 
 LedgerMPC provides a generic mechanism for parties in a two-party of multi-party computation to use a ledger as a communications channel instead of point-to-point connections. This can be useful for providing an audit trace of the protocol execution or enabling multi-party computations among parties who are not guaranteed to be on-line simultaneously. It is divided in two main components:
@@ -19,7 +21,6 @@ connected to the proxy and the proxy can capture the messages sent through such 
 
 The generic proxy component communicates with the MPC libraries by relying on TCP sockets, needed to emulate communication channels between the party impersonated by the library, and all the other parties involved in the MPC protocol.
 
-It is successfully tested with MPyC and EMP-ag2PC libraries. It can be run with Ehtereum, Hyperledger Fabric, and with a local dummy ledger aimed for testing. Moreover, we provided a Coin Tossing protocol secure against the majority of corrupted parties.
 
 
 ## Installation
