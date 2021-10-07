@@ -2,7 +2,7 @@
 
 MPC toolkit prototype for ledger interaction, developed by the University of Salerno (UNISA) crypto group. 
 
-It is successfully tested with [MPyC](https://github.com/lschoe/) and [EMP-ag2PC libraries](https://github.com/emp-toolkit/emp-ag2pc). It can be run with Ehtereum, Hyperledger Fabric, and with a local dummy ledger aimed for testing. Moreover, we provided a Coin Tossing protocol secure against the majority of corrupted parties. Specifically, the Ethereum library also allows quick protocol execution (without any block confirmation), still retaining MPC security.
+It is successfully tested with [MPyC](https://github.com/lschoe/) and [EMP-ag2PC libraries](https://github.com/emp-toolkit/emp-ag2pc). It can be run with Ehtereum, Hyperledger Fabric, and with a local dummy ledger aimed for testing. Moreover, we provided a Coin Tossing protocol secure against the majority of corrupted parties. Specifically, the Ethereum library also allows quick protocol execution (without any block confirmation), still retaining MPC security [https://eprint.iacr.org/2019/891.pdf].
 
 ## Description
 
