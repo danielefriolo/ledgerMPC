@@ -1,8 +1,9 @@
 # Ledger MPC Toolkit
 
+MPC toolkit prototype for ledger interaction, developed by the University of Salerno (UNISA) crypto group. 
+
 ## Description
 
-MPC toolkit prototype for ledger interaction, developed by the University of Salerno (UNISA) crypto group.
 LedgerMPC provides a generic mechanism for parties in a two-party of multi-party computation to use a ledger as a communications channel instead of point-to-point connections. This can be useful for providing an audit trace of the protocol execution or enabling multi-party computations among parties who are not guaranteed to be on-line simultaneously. It is divided in two main components:
 
 ### Main Proxy Component
