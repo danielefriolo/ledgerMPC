@@ -1,25 +1,30 @@
-# Ledger MPC Toolkit
+# LedgerMPC Toolkit
 
-MPC toolkit prototype for ledger interaction, developed by the University of Salerno (UNISA) crypto group. 
+The MPC toolkit prototype for ledger interaction has been developed by the University of Salerno (UNISA) crypto group. 
 
-It is successfully tested with [MPyC](https://github.com/lschoe/) and [EMP-ag2PC libraries](https://github.com/emp-toolkit/emp-ag2pc). It can be run with Ehtereum, Hyperledger Fabric, and with a local dummy ledger aimed for testing. Moreover, we provided a Coin Tossing protocol secure against the majority of corrupted parties. Specifically, the Ethereum library also allows quick protocol execution (without any block confirmation), still retaining MPC security [https://eprint.iacr.org/2019/891.pdf].
+The toolkit has been successfully tested with [MPyC](https://github.com/lschoe/) and [EMP-ag2PC libraries](https://github.com/emp-toolkit/emp-ag2pc). It can be currently run using Ehtereum, Hyperledger Fabric, and a local dummy ledger simulator usefol for quick tests. In addition to the above two libraries,
+we have successfully tested the toolkit using an implmentation of a coin-tossing protocol secure against dishonest majority. 
+When using Ethereum one can exploit the possibility of quick protocol execution (without any block confirmation) as discussed in [https://eprint.iacr.org/2019/891.pdf].
 
 ## Description
 
-LedgerMPC provides a generic mechanism for parties in a two-party of multi-party computation to use a ledger as a communications channel instead of point-to-point connections. This can be useful for providing an audit trace of the protocol execution or enabling multi-party computations among parties who are not guaranteed to be on-line simultaneously. It is divided in two main components:
+LedgerMPC provides a generic mechanism for parties in a two-party of multi-party computation to use a ledger as a communications channel instead of point-to-point connections. This can be useful for providing an audit trace of the protocol execution and to enable multi-party computations among parties who are not guaranteed to be on-line simultaneously. It is also beneficial in terms of privacy since players do not need to establish direct communication channels among them. 
 
-### Main Proxy Component
+LedgerMPC is logically divided in two following two main components.
 
-This component provides a proxy between an MPC protocol library and a ledger. Messages from the MPC library are automatically posted to the ledger by the proxy, and when a new message is posted on the ledger from another party, the proxy forwards it to the MPC library.
+### Generic Proxy Component
+
+This component provides a proxy between an MPC protocol library and a generic (abstract) ledger. Messages from the MPC library are automatically redirected to the generic ledger by the proxy, and when a new message is posted on the generic ledger from another party, the proxy forwards it to the MPC library.
 The MPC library remains untouched, and thus the feature of redirecting the communication through
 the ledger is transparent. The main requirement to make this possible consists of
 properly setting the IP addresses and port numbers typically used when configuring the library with
 classical TCP connections so that instead of connecting the parties directly, each party is
 connected to the proxy and the proxy can capture the messages sent through such TCP channels.  The proxy encapsulates messages sent to each of these ports as ledger transactions and broadcasts them to the network by contacting the corresponding peers.
 
-### The Generic Proxy Component
+### The Ledger Component
 
-The generic proxy component communicates with the MPC libraries by relying on TCP sockets, needed to emulate communication channels between the party impersonated by the library, and all the other parties involved in the MPC protocol.
+The ledger component implements a bridges between the generic ledger and real ledgers. Currently it includes a bridge to Hyperldeger Fabric, a bridt to Ethereum and a bridge to a dummy blockchain that can be used to speed up tests. The modular design used for the ledger component allows to easily add new modules
+to support other real ledgers.
 
 
 
