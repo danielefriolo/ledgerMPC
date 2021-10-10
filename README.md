@@ -8,7 +8,7 @@ When using Ethereum one can exploit the possibility of quick protocol execution 
 
 ## Description
 
-LedgerMPC provides a generic mechanism for parties in a two-party of multi-party computation to use a ledger as a communications channel instead of point-to-point connections. This can be useful for providing an audit trace of the protocol execution and to enable multi-party computations among parties who are not guaranteed to be on-line simultaneously. It is also beneficial in terms of privacy since players do not need to establish direct communication channels among them. 
+LedgerMPC provides a generic mechanism for parties in a two-party or multi-party computation to use a ledger as a communications channel instead of point-to-point connections. This can be useful for providing an audit trace of the protocol execution and to enable multi-party computations among parties who are not guaranteed to be on-line simultaneously. It is also beneficial in terms of privacy since players do not need to establish direct communication channels among them. 
 
 LedgerMPC is logically divided in two following two main components.
 
@@ -23,7 +23,7 @@ connected to the proxy and the proxy can capture the messages sent through such 
 
 ### The Ledger Component
 
-The ledger component implements a bridges between the generic ledger and real ledgers. Currently it includes a bridge to Hyperldeger Fabric, a bridt to Ethereum and a bridge to a dummy blockchain that can be used to speed up tests. The modular design used for the ledger component allows to easily add new modules
+The ledger component implements bridges between the generic ledger and real ledgers. Currently it includes a bridge to Hyperldeger Fabric, a bridge to Ethereum and a bridge to a dummy blockchain that can be used to speed up tests. The modular design used for the ledger component allows to easily add new bridges
 to support other real ledgers.
 
 
