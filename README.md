@@ -2,7 +2,7 @@
 
 The MPC toolkit prototype for ledger interaction has been developed by the University of Salerno (UNISA) crypto group. 
 
-The toolkit has been successfully tested with [MPyC](https://github.com/lschoe/) and [EMP-ag2PC libraries](https://github.com/emp-toolkit/emp-ag2pc). It can be currently run using Ehtereum, Hyperledger Fabric, and a local dummy ledger simulator usefol for quick tests. In addition to the above two libraries,
+The toolkit has been successfully tested with [MPyC](https://github.com/lschoe/) and [EMP-ag2PC libraries](https://github.com/emp-toolkit/emp-ag2pc). It can be currently run using Ehtereum, Hyperledger Fabric, and a local dummy ledger simulator useful for quick tests. In addition to the above two libraries,
 we have successfully tested the toolkit using an implmentation of a coin-tossing protocol secure against dishonest majority. 
 When using Ethereum one can exploit the possibility of quick protocol execution (without any block confirmation) as discussed in [https://eprint.iacr.org/2019/891.pdf].
 
